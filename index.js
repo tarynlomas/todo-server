@@ -1,5 +1,8 @@
 // Launching the server
-const port = 3000;
+
+// every file that will need to consume any key value pairs from .env file will need dotenv
+require("dotenv").config()
+const port = process.env.PORT;
 const app = require("./app")
 
 app.listen(port, () => {
