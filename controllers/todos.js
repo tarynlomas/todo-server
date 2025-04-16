@@ -46,7 +46,7 @@ const create = async (req, res) => {
     try {
         console.log("hello", req.body)
         const newTodo = await Todo.create(req.body);
-        res.status(201).send("Successfully created!");
+        res.status(201).send(newTodo);
     } catch(err) {
         res.status(409).send({error: err});
     }
@@ -80,6 +80,7 @@ const destroy = async (req, res) => {
         const todo = await Todo.showTodo(id)
         await todo.deleteTodo();
         // 204 is for successful delete
+        // only sending status so use sendStatus -> otherwise it will be hanging as .status would be missing .send aka send ends it
         res.sendStatus(204)
     } catch (err) {
         res.status(404).send({ error: err });

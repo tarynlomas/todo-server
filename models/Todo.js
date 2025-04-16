@@ -41,7 +41,7 @@ class Todo {
         } else {
             console.log("hello")
             data.push(newTodo)
-            return;
+            return new Todo(newTodo)
         }
     }
 
